@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../images/logo.png';
 
 const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    function handleClick() {
+        setIsOpen(!isOpen);
+    }
+
     return (
-        <nav>
+        <nav class="fixed inset-x-0 top-0 flex flex-row justify-between z-10 text-white bg-transparent">
             <div class="container mx-auto px-6 py-2 flex justify-between items-center">
-                {/* doesn't work this approach */}
-                {/*  <Link to="/" className="pl-8">
-                    <img
-                        src={Logo}
-                        alt="logo"
-                        className="h-20 w-2 p-2 self-center"
-                    />
-                </Link> */}
                 <div class="md:flex-shrink-0">
                     <a class="navbar-brand" href="/">
                         <div class="logo-image">
@@ -21,41 +19,61 @@ const Navbar = () => {
                         </div>
                     </a>
                 </div>
-                <div class="block lg:hidden">
-                    <button class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-teal-500 appearance-none focus:outline-none">
-                        <svg
-                            class="fill-current h-3 w-3"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <title>Menu</title>
-                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="hidden lg:block">
-                    <ul class="inline-flex">
-                        <li>
-                            <a class="px-4 font-bold" href="/">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a class="px-4 hover:text-gray-800" href="/about">
-                                About
-                            </a>
-                        </li>
-                        <li>
-                            <a class="px-4 hover:text-gray-800" href="/contact">
-                                Contact
-                            </a>
-                        </li>
+                <button
+                    type="button"
+                    className="block lg:hidden"
+                    onClick={handleClick}
+                >
+                    <svg
+                        className="h-6 w-6 fill-current"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                    >
+                        {isOpen && (
+                            <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+                            />
+                        )}
+                        {!isOpen && (
+                            <path
+                                fillRule="evenodd"
+                                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                            />
+                        )}
+                    </svg>
+                </button>
+                <ul class={`lg:flex ${isOpen ? 'block' : 'hidden'}`}>
+                    <Link to="/" className="px4 menu-text hover:text-gray-800">
+                        Home
+                    </Link>
+                    <Link
+                        to="/about"
+                        className="px4 menu-text hover:text-gray-800"
+                    >
+                        About
+                    </Link>
+                    <Link
+                        to="/contact"
+                        className="px4 menu-text hover:text-gray-800"
+                    >
+                        Contact
+                    </Link>
 
-                        <Link to="/login" className="px4 hover:text-gray-800">
-                            login
+                    <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                        <Link to="/signup">
+                            <button className="inline-flex items-center py-1 px-3 focus:outline-none hover:bg-gray-200">
+                                Login
+                            </button>
                         </Link>
-                    </ul>
-                </div>
+                        <Link to="/signup">
+                            <button className="inline-flex items-center py-1 px-3 focus:outline-none hover:bg-gray-200">
+                                SignIn
+                            </button>
+                        </Link>
+                    </div>
+                </ul>
             </div>
         </nav>
     );

@@ -1,13 +1,14 @@
 import React from 'react';
 
-const Menu = () => {
+const Signup = () => {
     return (
         <div>
             <div className="h-screen flex justify-center items-center bg-green-300">
-                <h1 className="text-9xl uppercase font-black">Menu</h1>
+                <h1 className="text-9xl uppercase font-black">signup</h1>
+                <h2>Choose one option</h2>
             </div>
         </div>
     );
 };
 
-export default Menu;
+export default Signup;

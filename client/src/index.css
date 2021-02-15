@@ -2,24 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.menu-card {
-    @apply flex flex-col justify-center items-center bg-white h-screen font-mono py-40;
-}
 
-.center-content {
-    @apply flex flex-col justify-center items-center;
-}
-
-.testing {
-    @apply bg-blue-500 text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider
-}
 
 .hero-img {
-    background-image: url(./images/hero.png);
-    width: 100vw;
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: url(./images/hero.jpg);
+    @apply bg-cover  bg-center  bg-no-repeat; 
 }
 
 .logo-image{
@@ -28,4 +15,16 @@
     border-radius: 50%;
     overflow: hidden;
     margin-top: -6px;
+}
+
+.btn-primary {
+@apply px-4 py-2 tracking-wide mt-4 text-2xl font-semibold text-white uppercase md:text-3xl transition-colors duration-200 transform 
+}
+
+.btn-secondary {
+@apply px-4 py-2 mt-4 tracking-wide text-2xl font-semibold text-blue-500 uppercase md:text-3xl transition-colors duration-200 transform 
+}
+
+.menu-text {
+    @apply px-2 py-1 mx-2 mt-2 text-sm font-medium
 }
