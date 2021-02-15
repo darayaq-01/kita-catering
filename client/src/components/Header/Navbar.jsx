@@ -17,7 +17,7 @@ const Navbar = () => {
                 <div class="md:flex-shrink-0">
                     <a class="navbar-brand" href="/">
                         <div class="logo-image">
-                            <img src={Logo} class="img-fluid" />
+                            <img src={Logo} alt="logo" class="img-fluid" />
                         </div>
                     </a>
                 </div>
@@ -50,6 +50,10 @@ const Navbar = () => {
                                 Contact
                             </a>
                         </li>
+
+                        <Link to="/login" className="px4 hover:text-gray-800">
+                            login
+                        </Link>
                     </ul>
                 </div>
             </div>
