@@ -1,45 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import Navbar from './components/Header/Navbar';
-import Dropdown from './components/Header/Dropdown';
 import Footer from './components/Footer/Footer';
 
-import Home from './pages/Index';
-import Register from './pages/Register';
-
-import { Switch, Route } from 'react-router-dom';
+import About from './components/Main/About';
+import Home from './components/Home/Home';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
 
 import './App.css';
 
 function App() {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => {
-        setIsOpen(!isOpen);
-    };
-
-    // cambiar esto...
-    useEffect(() => {
-        const hideMenu = () => {
-            if (window.innerWidth > 768 && isOpen) {
-                setIsOpen(false);
-            }
-        };
-        window.addEventListener('resize', hideMenu);
-        return () => {
-            window.removeEventListener('resize', hideMenu);
-        };
-    });
-
     return (
-        <>
-            <Navbar toggle={toggle} />
-            <Dropdown isOpen={isOpen} toggle={toggle} />
-            <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/register" exact component={Register} />
-            </Switch>
+        <BrowserRouter>
+            <Navbar />
+            <div>
+                {/* <Menu /> */}
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/about" exact component={About} />
+                    <Route path="/login" exact component={Signup} />
+                    <Route path="/signup" exact component={Signup} />
+                </Switch>
+            </div>
             <Footer />
-        </>
+        </BrowserRouter>
     );
 }
 
