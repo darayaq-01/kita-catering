@@ -10,70 +10,76 @@ const Navbar = () => {
     }
 
     return (
-        <nav class="fixed inset-x-0 top-0 flex flex-row justify-between z-10 text-white bg-transparent">
-            <div class="container mx-auto px-6 py-2 flex justify-between items-center">
-                <div class="md:flex-shrink-0">
-                    <a class="navbar-brand" href="/">
-                        <div class="logo-image">
-                            <img src={Logo} alt="logo" class="img-fluid" />
-                        </div>
-                    </a>
-                </div>
-                <button
-                    type="button"
-                    className="block lg:hidden"
-                    onClick={handleClick}
-                >
-                    <svg
-                        className="h-6 w-6 fill-current"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                    >
-                        {isOpen && (
-                            <path
-                                fillRule="evenodd"
-                                clipRule="evenodd"
-                                d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-                            />
-                        )}
-                        {!isOpen && (
-                            <path
-                                fillRule="evenodd"
-                                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                            />
-                        )}
-                    </svg>
-                </button>
-                <ul class={`lg:flex ${isOpen ? 'block' : 'hidden'}`}>
-                    <Link to="/" className="px4 menu-text hover:text-gray-800">
-                        Home
+        <nav className="bg-white shadow dark:bg-gray-800">
+            <div class="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center">
+                <div className="flex items-center justify-between">
+                    {/* Logo */}
+                    <Link to="/" className="block text-left">
+                        <img src={Logo} alt="logo" class="h-10 sm:h-10" />
                     </Link>
-                    <Link
-                        to="/about"
-                        className="px4 menu-text hover:text-gray-800"
-                    >
-                        About
-                    </Link>
-                    <Link
-                        to="/contact"
-                        className="px4 menu-text hover:text-gray-800"
-                    >
-                        Contact
-                    </Link>
-
-                    <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
-                        <Link to="/signup">
-                            <button className="inline-flex items-center py-1 px-3 focus:outline-none hover:bg-gray-200">
-                                Login
-                            </button>
-                        </Link>
-                        <Link to="/signup">
-                            <button className="inline-flex items-center py-1 px-3 focus:outline-none hover:bg-gray-200">
-                                SignIn
-                            </button>
-                        </Link>
+                    {/* Mobile menu button */}
+                    <div className="flex md:hidden">
+                        <button
+                            type="button"
+                            className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+                            aria-label="toggle menu"
+                            onClick={handleClick}
+                        >
+                            <svg
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                                className="w-6 h-6"
+                            >
+                                {isOpen && (
+                                    <path
+                                        x-show="open"
+                                        fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"
+                                    ></path>
+                                )}
+                                {!isOpen && (
+                                    <path
+                                        x-show="!open"
+                                        fill-rule="evenodd"
+                                        className=""
+                                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                                        clip-rule="evenodd"
+                                    ></path>
+                                )}
+                            </svg>
+                        </button>
                     </div>
-                </ul>
+                </div>
+                {/* mobile menu open: block // menu closed: hidden */}
+
+                <div className={`lg:flex ${isOpen ? 'block' : 'hidden'}`}>
+                    <div className="w-full md:flex md:items-center md:justify-between">
+                        <div className="flex flex-col px-2 py-3 -mx-4 md:flex-row md:mx-0 md:py-0">
+                            <Link to="/" className="menu-mobile">
+                                Home
+                            </Link>
+                            <Link to="/about" className="menu-mobile">
+                                About
+                            </Link>
+                            <Link to="/contact" className="menu-mobile">
+                                Contact
+                            </Link>
+                        </div>
+                        <div className="flex">
+                            <Link to="/signup">
+                                <button className="bg-white hover:bg-text-gray-800 text-gray-900 ml-4 py-2 px-3">
+                                    Log In
+                                </button>
+                            </Link>
+                            <Link to="/signup">
+                                <button className="bg-black hover:bg-text-gray-800 text-white ml-4 py-2 px-3">
+                                    Sign Up
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     );
