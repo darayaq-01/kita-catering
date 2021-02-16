@@ -1,35 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Column4 = () => {
     return (
-        <div class="w-full md:w-1/4 text-center md:text-left">
-            <h5 class="uppercase mb-6 font-bold">Company</h5>
-            <ul class="mb-4">
-                <li class="mt-2">
-                    <a
-                        href="/"
-                        class="hover:underline text-gray-600 hover:text-orange-500"
-                    >
-                        Official Blog
-                    </a>
-                </li>
-                <li class="mt-2">
-                    <a
-                        href="/"
-                        class="hover:underline text-gray-600 hover:text-orange-500"
-                    >
-                        About Us
-                    </a>
-                </li>
-                <li class="mt-2">
-                    <a
-                        href="/"
-                        class="hover:underline text-gray-600 hover:text-orange-500"
-                    >
-                        Contact
-                    </a>
-                </li>
-            </ul>
+        <div>
+            <h3 class="text-gray-700 uppercase dark:text-white">Contact</h3>
+            <span class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
+                +49 312 654 65
+            </span>
+            <span class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
+                KitaCatering@email.de
+            </span>
         </div>
     );
 };

@@ -1,35 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Column3 = () => {
     return (
-        <div class="w-full md:w-1/4 text-center md:text-left">
-            <h5 class="uppercase mb-6 font-bold">Social</h5>
-            <ul class="mb-4">
-                <li class="mt-2">
-                    <a
-                        href="/"
-                        class="hover:underline text-gray-600 hover:text-orange-500"
-                    >
-                        Facebook
-                    </a>
-                </li>
-                <li class="mt-2">
-                    <a
-                        href="/"
-                        class="hover:underline text-gray-600 hover:text-orange-500"
-                    >
-                        Linkedin
-                    </a>
-                </li>
-                <li class="mt-2">
-                    <a
-                        href="/"
-                        class="hover:underline text-gray-600 hover:text-orange-500"
-                    >
-                        Twitter
-                    </a>
-                </li>
-            </ul>
+        <div>
+            <h3 className="text-gray-700 uppercase dark:text-white">
+                Products
+            </h3>
+            <Link
+                to="/"
+                className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+            >
+                Meals for Kindergarden
+            </Link>
+            <Link
+                to="/"
+                className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+            >
+                Meals for Schools
+            </Link>
+            <Link
+                to="/"
+                className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+            >
+                Catering for events
+            </Link>
         </div>
     );
 };
