@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import Glide from 'react-glidejs';
 
-import { CardUno, CardDos, CardTres } from './CardClients/CardUno';
+import { CardUno, CardDos, CardTres } from './CardClients/Card';
 
 /*
  * import './caroussel-css/caroussel_transitions.css';
@@ -12,7 +12,10 @@ const Testimonials = () => {
     const gliderRef = useRef(null);
 
     return (
-        <div className="bg-transparent">
+        <article className="flex flex-col justify-between px-6 py-2 bg-transparent">
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">
+                Our Clients
+            </h2>
             {/* className here is for the display */}
             <Glide
                 ref={gliderRef}
@@ -37,7 +40,7 @@ const Testimonials = () => {
                 <CardTres />
                 <CardUno />
             </Glide>
-        </div>
+        </article>
     );
 };
 
