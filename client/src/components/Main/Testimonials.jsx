@@ -1,29 +1,43 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import Glide from 'react-glidejs';
 
-/* should be a corrousel */
+import { CardUno, CardDos, CardTres } from './CardClients/CardUno';
+
+/*
+ * import './caroussel-css/caroussel_transitions.css';
+ * import './caroussel-css/caroussel.css';
+ */
 
 const Testimonials = () => {
+    const gliderRef = useRef(null);
+
     return (
-        <section class="bg-gray-100 my-10">
-            <div class="container mx-auto px-6 py-20">
-                <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">
-                    Our clients
-                </h2>
-                <div class="flex flex-wrap">
-                    <div class="w-full md:w-1/3 px-2 mb-4">
-                        <div class="bg-white rounded shadow py-2">
-                            <p class="text-gray-800 text-base px-6 mb-5">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Earum, officia!
-                            </p>
-                            <p class="text-gray-500 text-xs md:text-sm px-6">
-                                Juana Perez, CEO GoogleKidzKita
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div className="bg-transparent">
+            {/* className here is for the display */}
+            <Glide
+                ref={gliderRef}
+                throttle={0}
+                type="slider"
+                customSlideAnimation={{
+                    timeout: 500,
+                    classNames: 'fade',
+                }}
+                peek={{
+                    before: 30,
+                    after: 30,
+                }}
+                perView={1}
+                startAt={1}
+                slideClassName="max-w-full border-10 border-black"
+                /* this className affect every frame but not the card.  */
+                focusAt="center"
+            >
+                <CardUno />
+                <CardDos />
+                <CardTres />
+                <CardUno />
+            </Glide>
+        </div>
     );
 };
 
