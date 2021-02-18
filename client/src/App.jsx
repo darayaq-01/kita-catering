@@ -1,5 +1,10 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from 'react-router-dom';
 
 import Navbar from './components/Header/Navbar';
 import Footer from './components/Footer/Footer';
@@ -13,19 +18,16 @@ import './App.css';
 
 function App() {
     return (
-        <BrowserRouter>
+        <Router>
             <Navbar />
-            <div>
-                {/* <Menu /> */}
-                <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/about" exact component={About} />
-                    <Route path="/login" exact component={Signup} />
-                    <Route path="/signup" exact component={Signup} />
-                </Switch>
-            </div>
+            <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/about" exact component={About} />
+                <Route path="/login" exact component={Signup} />
+                <Route path="/signup" exact component={Signup} />
+            </Switch>
             <Footer />
-        </BrowserRouter>
+        </Router>
     );
 }
 
