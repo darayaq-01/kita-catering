@@ -27,3 +27,9 @@ resume - what app do
 ## Example UI
 
 -   pictures or gif to example
+
+.env inside the main folder and add proxy to the frontends package.json ("proxy": "http://127.0.0.1:5000",)
+NODE_ENV = development
+PORT = 5000
+MONGO_URI = mongodb+srv://kita1234:food4All@kita.fnmgc.mongodb.net/kitacatering?retryWrites=true&w=majority
+JWT_SECRET = superssavesupersecretuwillneverknowatleasttillyoufindoutthissecretwhoopwhoop
