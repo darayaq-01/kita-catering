@@ -1,35 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import UserService from '../../redux/services/user.service';
 
-import Content from '../Main/Content';
-import Hero from './Hero';
-
-const Home = () => {
+const BoardAdmin = () => {
     const [content, setContent] = useState('');
 
     useEffect(() => {
-        UserService.getPublicContent().then(
+        UserService.getAdminBoard().then(
             (response) => {
                 setContent(response.data);
             },
             (error) => {
                 const _content =
-                    (error.response && error.response.data) ||
+                    (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
                     error.message ||
                     error.toString();
 
                 setContent(_content);
             }
         );
-    }, []);
-
+    });
     return (
-        <div>
-            <h3 className="bg-red-400">{content}</h3>
-            <Hero />
-            <Content />
-        </div>
+        <section>
+            <h1>{content}</h1>
+            <p>hello</p>
+        </section>
     );
 };
 
-export default Home;
+export default BoardAdmin;
