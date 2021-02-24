@@ -5,10 +5,12 @@ import Logo from '../../images/logo.png';
 import { logout } from '../../redux/actions/auth';
 
 const Navbar = () => {
+
     const [isOpen, setIsOpen] = useState(false);
 
     const [showFacilitiesBoard, setShowFacilitiesBoard] = useState(false);
     const [showAdminBoard, setShowAdminBoard] = useState(false);
+
     const logOut = () => {
         dispatch(logout());
     };
@@ -92,7 +94,7 @@ const Navbar = () => {
                                 </Link>
                             )}
                             {showAdminBoard && (
-                                <Link to={'/admin'} classNam="menu-mobile">
+                                <Link to={'/admin'} className="menu-mobile">
                                     admin board
                                 </Link>
                             )}
@@ -116,21 +118,15 @@ const Navbar = () => {
                                     </button>
                                 </div>
                             ) : (
-                                <div>
-                                    <Link to={'/login'}>Login</Link>
-                                    {/* testing */}
-                                    <Link to={'/register'}>
-                                        <button className="bg-black hover:bg-text-gray-800 text-white ml-4 py-2 px-3">
-                                            REGISTER
+                                    <div>
+                                        <Link to={'/login'}>Login</Link>
+                                        <Link to={'/signup'}>
+                                            <button className="bg-black hover:bg-text-gray-800 text-white ml-4 py-2 px-3">
+                                                Sign Up
                                         </button>
-                                    </Link>
-                                    <Link to={'/signup'}>
-                                        <button className="bg-black hover:bg-text-gray-800 text-white ml-4 py-2 px-3">
-                                            Sign Up
-                                        </button>
-                                    </Link>
-                                </div>
-                            )}
+                                        </Link>
+                                    </div>
+                                )}
                         </div>
                     </div>
                 </div>
