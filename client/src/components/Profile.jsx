@@ -15,7 +15,7 @@ const Profile = () => {
                 <strong>{currentUser.username}</strong> Profile
             </header>
             <p>
-                <strong>oken:</strong>{' '}
+                <strong>token:</strong>{' '}
                 {currentUser.accessToken.substring(0, 20)} ...{' '}
                 {currentUser.accessToken.substr(
                     currentUser.accessToken.length - 20
