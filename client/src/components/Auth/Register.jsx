@@ -1,7 +1,4 @@
-/* testing */
-
-
-import React, { useState, useRef } from 'react';
+/* import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Form from 'react-validation/build/form';
@@ -39,24 +36,47 @@ const Register = () => {
     const form = useRef();
     const checkBtn = useRef();
 
-    const [username, setUsername] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [street, setStreet] = useState('');
+    const [houseNumber, setHouseNumber] = useState('');
+    const [postalCode, setPostalCode] = useState('');
+    const [location, setLocation] = useState('');
     const [password, setPassword] = useState('');
     const [successful, setSuccessful] = useState(false);
 
     const { message } = useSelector((state) => state.message);
     const dispatch = useDispatch();
 
-    const onChangeUsername = (e) => {
-        const username = e.target.value;
-        setUsername(username);
+    const onChangeFirstName = (e) => {
+        const firstName = e.target.value;
+        setFirstName(firstName);
     };
-
+    const onChangeLastName = (e) => {
+        const lastName = e.target.value;
+        setLastName(lastName);
+    };
     const onChangeEmail = (e) => {
         const email = e.target.value;
         setEmail(email);
     };
-
+    const onChangeStreet = (e) => {
+        const street = e.target;
+        setStreet(street);
+    };
+    const onChangeHouseNumber = (e) => {
+        const houseNumber = e.target.value;
+        setHouseNumber(houseNumber);
+    };
+    const onChangePostalCode = (e) => {
+        const postalCode = e.target.value;
+        setPostalCode(postalCode);
+    };
+    const onChangeLocation = (e) => {
+        const location = e.target.value;
+        setLocation(location);
+    };
     const onChangePassword = (e) => {
         const password = e.target.value;
         setPassword(password);
@@ -70,7 +90,18 @@ const Register = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            dispatch(register(username, email, password))
+            dispatch(
+                register(
+                    firstName,
+                    lastName,
+                    email,
+                    street,
+                    houseNumber,
+                    postalCode,
+                    location,
+                    password
+                )
+            )
                 .then(() => {
                     setSuccessful(true);
                 })
@@ -86,11 +117,21 @@ const Register = () => {
                 {!successful && (
                     <>
                         <div>
-                            <label htmlFor="username">username</label>
+                            <label htmlFor="firstname">firstname</label>
                             <Input
                                 type="text"
-                                name="username"
-                                value={username}
+                                name="firstname"
+                                value={firstName}
+                                onChange={onChangeUsername}
+                                validations={[required, vusername]}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="lastname">username</label>
+                            <Input
+                                type="text"
+                                name="firstname"
+                                value={firstName}
                                 onChange={onChangeUsername}
                                 validations={[required, vusername]}
                             />
@@ -140,3 +181,4 @@ const Register = () => {
 };
 
 export default Register;
+ */

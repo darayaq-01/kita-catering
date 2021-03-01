@@ -1,281 +1,300 @@
-import React, { Component } from "react";
-import "./auth.css";
+import axios from 'axios';
+import React, { Component } from 'react';
+
+import './auth.css';
 
 const emailRegex = RegExp(
-  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
 
-const numberRegex = RegExp(
-  /^[0-9]*$/
-);
+const numberRegex = RegExp(/^[0-9]*$/);
 
-const formValid = ({ formErrors, ...rest }) => {
-  let valid = true;
+function formValid({ formErrors, ...rest }) {
+    let valid = true;
 
-  // validate form errors being empty
-  Object.values(formErrors).forEach(val => {
-    val.length > 0 && (valid = false);
-  });
+    // validate form errors being empty
+    Object.values(formErrors).forEach((val) => {
+        val.length > 0 && (valid = false);
+    });
 
-  // validate the form was filled out
-  Object.values(rest).forEach(val => {
-    val === null && (valid = false);
-  });
+    // validate the form was filled out
+    Object.values(rest).forEach((val) => {
+        val === null && (valid = false);
+    });
 
-  return valid;
-};
-
-class RegisterFacility extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      facilityName: null,
-      contactPerson: null,
-      email: null,
-      street:null,
-      number:null,
-      postalCode: null,
-      city: null,
-      phone: null,
-      password: null,
-      formErrors: {
-        facilityName: "",
-        contactPerson: "",
-        email: "",
-        street:"",
-        number:"",
-        postalCode:"",
-        city:"",
-        phone:"",
-        number:"",
-        password: ""
-      }
-    };
-  }
-
-  handleSubmit = e => {
-    e.preventDefault();
-
-    if (formValid(this.state)) {
-      console.log(`
-        --SUBMITTING--
-        Facility Name: ${this.state.firstName}
-        Contact Person: ${this.state.lastName}
-        Email: ${this.state.email}
-        Street: ${this.state.street}
-        Number: ${this.state.number}
-        Postal Code: ${this.state.postalCode}
-        City: ${this.state.city}
-        Phone: ${this.state.postalCode}
-        Password: ${this.state.password}
-      `);
-    } else {
-      console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
-    }
-  };
-
-  handleChange = e => {
-    e.preventDefault();
-    const { name, value } = e.target;
-    let formErrors = { ...this.state.formErrors };
-
-    switch (name) {
-        case "facilityName":
-        formErrors.facilityName =
-          value.length < 2 ? "minimum 2 characters" : "";
-        break;
-        case "contactPerson":
-        formErrors.contactPerson =
-          value.length < 2 ? "minimum 2 characters" : "";
-        break;
-        case "email":
-          formErrors.email = emailRegex.test(value)
-            ? ""
-            : "invalid email address";
-          break;
-        case "street":
-        formErrors.street =
-          value.length < 5 ? "minimum 5 characters" : "";
-        break;
-        case "number":
-        formErrors.number =
-          value.length < 1 ? "minimum 1 character" : "";
-        break;
-        case "postalCode":
-          formErrors.postalCode = "";
-          if (!numberRegex.test(value)) {
-            formErrors.postalCode = "only numbers";
-          }
-          if (value.length !== 5 ) {
-            formErrors.postalCode += " must be 5 digits";
-          }
-        break;
-        case "city":
-        formErrors.city =
-          value.length < 2 ? "minimum 2 characters" : "";
-        break;
-        case "phone":
-        formErrors.phone =
-          value.length < 10 ? "minimum 10 characters" : "";
-        break;
-        case "password":
-        formErrors.password =
-          value.length < 8 ? "minimum 8 characters" : "";
-        break;
-
-        default:
-        break;
-    }
-
-    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
-  };
-
-  render() {
-    const { formErrors } = this.state;
-
-    return (
-      <div className="wrapper">
-        <div className="form-wrapper">
-          <h1>Register</h1>
-          <form onSubmit={this.handleSubmit} noValidate>
-            <div className="facilityName">
-              <label htmlFor="facilityName">Facility Name</label>
-              <input
-                className={formErrors.facilityName.length > 0 ? "error" : null}
-                placeholder="Facility Name"
-                type="text"
-                name="facilityName"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.facilityName.length > 0 && (
-                <span className="errorMessage">{formErrors.facilityName}</span>
-              )}
-            </div>
-            <div className="contactPerson">
-              <label htmlFor="contactPerson">Contact Person</label>
-              <input
-                className={formErrors.contactPerson.length > 0 ? "error" : null}
-                placeholder="Contact Person"
-                type="text"
-                name="contactPerson"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.contactPerson.length > 0 && (
-                <span className="errorMessage">{formErrors.contactPerson}</span>
-              )}
-            </div>
-            <div className="email">
-              <label htmlFor="email">Email</label>
-              <input
-                className={formErrors.email.length > 0 ? "error" : null}
-                placeholder="Email"
-                type="email"
-                name="email"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.email.length > 0 && (
-                <span className="errorMessage">{formErrors.email}</span>
-              )}
-            </div>
-            <div className="street">
-              <label htmlFor="street">Street</label>
-              <input
-                className={formErrors.street.length > 0 ? "error" : null}
-                placeholder="Street"
-                type="text"
-                name="street"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.street.length > 0 && (
-                <span className="errorMessage">{formErrors.street}</span>
-              )}
-            </div>
-
-            <div className="number">
-              <label htmlFor="number">Number</label>
-              <input
-                className={formErrors.number.length > 0 ? "error" : null}
-                placeholder="Number"
-                type="text"
-                name="number"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.number.length > 0 && (
-                <span className="errorMessage">{formErrors.number}</span>
-              )}
-            </div>
-
-            <div className="postalCode">
-              <label htmlFor="postalCode">Postal Code</label>
-              <input
-                className={formErrors.postalCode.length > 0 ? "error" : null}
-                placeholder="Postal Code"
-                type="text"
-                name="postalCode"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.postalCode.length > 0 && (
-                <span className="errorMessage">{formErrors.postalCode}</span>
-              )}
-            </div>
-            <div className="city">
-              <label htmlFor="city">City</label>
-              <input
-                className={formErrors.city.length > 0 ? "error" : null}
-                placeholder="City"
-                type="text"
-                name="city"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.city.length > 0 && (
-                <span className="errorMessage">{formErrors.city}</span>
-              )}
-            </div>
-            <div className="phone">
-              <label htmlFor="phone">Phone</label>
-              <input
-                className={formErrors.phone.length > 0 ? "error" : null}
-                placeholder="Phone"
-                type="text"
-                name="phone"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.phone.length > 0 && (
-                <span className="errorMessage">{formErrors.phone}</span>
-              )}
-            </div>
-            <div className="password">
-              <label htmlFor="password">Password</label>
-              <input
-                className={formErrors.password.length > 0 ? "error" : null}
-                placeholder="Password"
-                type="password"
-                name="password"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.password.length > 0 && (
-                <span className="errorMessage">{formErrors.password}</span>
-              )}
-            </div>
-            <div className="createAccount">
-              <button type="submit">Create Account</button>
-              <small>Already have an account?</small>
-            </div>
-          </form>
-        </div>
-      </div>
-    );
-  }
+    return valid;
 }
 
-export default RegisterFacility;
+class RegisterParents extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            firstName: null,
+            secondName: null,
+            email: null,
+            address: {
+                street: null,
+                houseNumber: null,
+                postalCode: null,
+                location: null,
+            },
+            password: null,
+            formErrors: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                address: {
+                    street: '',
+                    houseNumber: '',
+                    postalCode: '',
+                    location: '',
+                },
+                password: '',
+            },
+        };
+    }
+
+    handleSubmit = (e) => {
+        const API_URL = '/api/users/';
+
+        const payload = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            address: {
+                street: this.state.address.street,
+                houseNumber: this.state.address.houseNumber,
+                postalCode: this.state.address.postalCode,
+                location: this.state.address.location,
+            },
+            password: this.state.password,
+        };
+
+        axios
+            .post(API_URL, payload)
+            .then(function (response) {
+                console.log(response);
+                if (response.status === 0) {
+                    console.log(`--SUBMITTING--
+                    First Name: ${this.state.firstName}
+                    Last Name: ${this.state.lastName}
+                    Email: ${this.state.email}
+                    Address: {
+                        Street: ${this.state.address.street}
+                        House Number: ${this.state.address.houseNumber}
+                        Postal code: ${this.state.address.postalCode}
+                        Location: ${this.state.address.location}
+                    }
+                    Password: ${this.state.password}`);
+                } else if (response.code === 204) {
+                    console.log('Username password do not match');
+                    alert('username password do not match');
+                } else {
+                    if (response.status === 200) {
+                        console.log(response.data);
+                        alert('you are logged in');
+                    } else {
+                        console.log('Username does not exists');
+                        alert('Username does not exist');
+                    }
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+
+    handleChange = (e) => {
+        let name = e.target.name.split('.'); //string 'address.street' => ['address', 'street]
+        if (name.length > 1) {
+            this.setState({
+                ...this.state,
+                [name[0]]: {
+                    ...this.state[name[0]],
+                    [name[1]]: e.target.value,
+                },
+            });
+        } else {
+            this.setState({ ...this.state, [e.target.name]: e.target.value });
+        }
+    };
+
+    /*  this.setState({ formErrors, [name]: value }, () =>
+            console.log(this.state)
+        ); 
+    };*/
+
+    render() {
+        /* const  { formErrors }  = this.state; */
+
+        return (
+            <div className="wrapper">
+                <div className="form-wrapper">
+                    <h1>Register Facility</h1>
+
+                    <div className="firstName">
+                        <label htmlFor="firstName">First Name</label>
+                        <input
+                            /*  className={
+                                formErrors.firstName.length > 0 ? 'error' : null
+                            } */
+                            placeholder="First Name"
+                            type="text"
+                            name="firstName"
+                            noValidate
+                            onChange={this.handleChange}
+                        />
+                        {/* {formErrors.firstName.length > 0 && (
+                            <span className="errorMessage">
+                                {formErrors.firstName}
+                            </span>
+                        )} */}
+                    </div>
+                    <div className="lastName">
+                        <label htmlFor="lastName">Last Name</label>
+                        <input
+                            /* className={
+                                formErrors.lastName.length > 0 ? 'error' : null
+                            } */
+                            placeholder="Last Name"
+                            type="text"
+                            name="lastName"
+                            noValidate
+                            onChange={this.handleChange}
+                        />
+                        {/*  {formErrors.lastName.length > 0 && (
+                            <span className="errorMessage">
+                                {formErrors.lastName}
+                            </span>
+                        )} */}
+                    </div>
+                    <div className="email">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            /*  className={
+                                formErrors.email.length > 0 ? 'error' : null
+                            } */
+                            placeholder="Email"
+                            type="email"
+                            name="email"
+                            noValidate
+                            onChange={this.handleChange}
+                        />
+                        {/*  {formErrors.email.length > 0 && (
+                            <span className="errorMessage">
+                                {formErrors.email}
+                            </span>
+                        )} */}
+                    </div>
+                    <div className="street">
+                        <label htmlFor="street">street</label>
+                        <input
+                            /*  className={
+                                formErrors.street.length > 0 ? 'error' : null
+                            } */
+                            placeholder="street"
+                            type="text"
+                            name="address.street"
+                            noValidate
+                            onChange={this.handleChange}
+                        />
+                        {/* {formErrors.street.length > 0 && (
+                            <span className="errorMessage">
+                                {formErrors.street}
+                            </span>
+                        )} */}
+                    </div>
+
+                    <div className="houseNumber">
+                        <label htmlFor="houseNumber">houseNumber</label>
+                        <input
+                            /* className={
+                                formErrors.houseNumber.length > 0
+                                    ? 'error'
+                                    : null
+                            } */
+                            placeholder="houseNumber"
+                            type="text"
+                            name="address.houseNumber"
+                            noValidate
+                            onChange={this.handleChange}
+                        />
+                        {/*  {formErrors.houseNumber.length > 0 && (
+                            <span className="errorMessage">
+                                {formErrors.houseNumber}
+                            </span>
+                        )} */}
+                    </div>
+
+                    <div className="postalCode">
+                        <label htmlFor="postalCode">postalCode</label>
+                        <input
+                            /* className={
+                                formErrors.postalCode.length > 0
+                                    ? 'error'
+                                    : null
+                            } */
+                            placeholder="postalCode"
+                            type="text"
+                            name="address.postalCode"
+                            noValidate
+                            onChange={this.handleChange}
+                        />
+                        {/*  {formErrors.postalCode.length > 0 && (
+                            <span className="errorMessage">
+                                {formErrors.postalCode}
+                            </span>
+                        )} */}
+                    </div>
+
+                    <div className="location">
+                        <label htmlFor="location">location</label>
+                        <input
+                            /* className={
+                                formErrors.location.length > 0 ? 'error' : null
+                            } */
+                            placeholder="location"
+                            type="text"
+                            name="address.location"
+                            noValidate
+                            onChange={this.handleChange}
+                        />
+                        {/* {formErrors.location.length > 0 && (
+                            <span className="errorMessage">
+                                {formErrors.location}
+                            </span>
+                        )} */}
+                    </div>
+
+                    <div className="password">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            /* className={
+                                formErrors.password.length > 0 ? 'error' : null
+                            } */
+                            placeholder="Password"
+                            type="password"
+                            name="password"
+                            noValidate
+                            onChange={this.handleChange}
+                        />
+                        {/* {formErrors.password.length > 0 && (
+                            <span className="errorMessage">
+                                {formErrors.password}
+                            </span>
+                        )} */}
+                    </div>
+                    <div className="createAccount">
+                        <button onClick={this.handleSubmit}>
+                            Create Account
+                        </button>
+                        <small>Already have an account?</small>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default RegisterParents;
