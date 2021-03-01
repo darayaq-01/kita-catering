@@ -25,7 +25,7 @@ function formValid({ formErrors, ...rest }) {
     return valid;
 }
 
-class RegisterParents extends Component {
+class RegisterFacility extends Component {
     constructor(props) {
         super(props);
 
@@ -297,4 +297,4 @@ class RegisterParents extends Component {
     }
 }
 
-export default RegisterParents;
+export default RegisterFacility;
