@@ -10,6 +10,9 @@ import Home from './components/Home/Home';
 
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
+import RegisterFacility from "./components/Auth/RegisterFacility"
+import RegisterParents from "./components/Auth/RegisterParents"
+
 import BoardUser from './components/Dashboards/BoardUser';
 import BoardFacilities from './components/Dashboards/BoardFacilities';
 import BoardAdmin from './components/Dashboards/BoardAdmin';
@@ -20,8 +23,6 @@ import { history } from './helpers/history';
 
 import './App.css';
 
-/* testing */
-import Register from './components/Auth/Register';
 
 function App() {
     const dispatch = useDispatch();
@@ -39,9 +40,9 @@ function App() {
                 <Route exact path={['/', '/home']} component={Home} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/login" component={Login} />
-                {/* testing */}
-                <Route exact path="/register" component={Register} />
                 <Route exact path="/signup" component={Signup} />
+                <Route exact path="/register/facility" component={RegisterFacility} />
+                <Route exact path="/register/user" component={RegisterParents} />
                 {/* join the registers */}
                 <Route path="/user" component={BoardUser} />
                 <Route path="/facilities" component={BoardFacilities} />
