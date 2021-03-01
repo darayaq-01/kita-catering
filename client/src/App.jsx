@@ -14,7 +14,8 @@ import BoardUser from './components/Dashboards/BoardUser';
 import BoardFacilities from './components/Dashboards/BoardFacilities';
 import BoardAdmin from './components/Dashboards/BoardAdmin';
 import { clearMessage } from './redux/actions/message';
-
+import RegisterFacility from './components/Auth/RegisterFacility';
+import RegisterParents from './components/Auth/RegisterParents';
 import { history } from './helpers/history';
 
 import './App.css';
@@ -45,6 +46,8 @@ function App() {
                 <Route path="/user" component={BoardUser} />
                 <Route path="/facilities" component={BoardFacilities} />
                 <Route path="/admin" component={BoardAdmin} />
+                <Route path="/register/facility" component={RegisterFacility} />
+                <Route path="/register/user" component={RegisterParents} />
             </Switch>
             <Footer />
         </Router>

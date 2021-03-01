@@ -6,7 +6,7 @@ import Hero from './Hero';
 
 const Home = () => {
     const [content, setContent] = useState('');
-
+    /* 
     useEffect(() => {
         UserService.getPublicContent().then(
             (response) => {
@@ -22,7 +22,7 @@ const Home = () => {
             }
         );
     }, []);
-
+ */
     return (
         <div>
             <h3 className="bg-red-400">{content}</h3>

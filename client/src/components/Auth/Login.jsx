@@ -1,108 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-
-import Form from 'react-validation/build/form';
-import Input from 'react-validation/build/input';
-import CheckButton from 'react-validation/build/button';
-
-import { login } from '../../redux/actions/auth';
-
-const required = (value) => {
-    if (!value) {
-        return <div role="alert">field required!</div>;
-    }
-};
-
-const Login = (props) => {
-    const form = useRef();
-    const checkBtn = useRef();
-
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState('');
-
-    const { isLoggedIn } = useSelector((state) => state.auth);
-    const { message } = useSelector((state) => state.message);
-
-    const dispatch = useDispatch();
-
-    const onChangeUsername = (e) => {
-        const username = e.target.value;
-        setUsername(username);
-    };
-    const onChangePassword = (e) => {
-        const password = e.target.value;
-        setPassword(password);
-    };
-    const handleLogin = (e) => {
-        e.preventDefault();
-        setLoading(true);
-
-        form.current.validateALL();
-
-        if (checkBtn.current.context._errors.length === 0) {
-            dispatch(login(username, password))
-                .then(() => {
-                    props.history.push('/profile');
-                    window.location.reload();
-                })
-                .catch(() => {
-                    setLoading(false);
-                });
-        } else {
-            setLoading(false);
-        }
-    };
-
-    if (isLoggedIn) {
-        return <Redirect to="/profile" />;
-    }
-
-    return (
-        <div className="flex flex-col container">
-            <div>image profile</div>
-            <Form onSubmit={handleLogin} ref={form}>
-                <div>
-                    <label htmlFor="username">username</label>
-                    <Input
-                        type="text"
-                        name="username"
-                        onChange={onChangeUsername}
-                        validations={[required]}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password">password</label>
-                    <Input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={onChangePassword}
-                        validations={[required]}
-                    />
-                </div>
-                <div>
-                    <button disabled={loading}>
-                        {loading && <span>loading...</span>}
-                        <span>login</span>
-                    </button>
-                </div>
-                {message && (
-                    <div>
-                        <div role="alert">{message}</div>
-                    </div>
-                )}
-                <CheckButton style={{ display: 'none' }} ref={checkBtn} />
-            </Form>
-        </div>
-    );
-};
-
-export default Login;
-
-/* 
+import axios from 'axios';
 import React, { Component } from 'react';
+
 import './auth.css';
 
 const emailRegex = RegExp(
@@ -140,17 +38,37 @@ class Login extends Component {
     }
 
     handleSubmit = (e) => {
-        e.preventDefault();
+        const API_URL = '/api/users/';
 
-        if (formValid(this.state)) {
-            console.log(`
-        --SUBMITTING--
-        Email: ${this.state.email}
-        Password: ${this.state.password}
-      `);
-        } else {
-            console.error('FORM INVALID - DISPLAY ERROR MESSAGE');
-        }
+        const payload = {
+            email: this.state.email,
+            password: this.state.password,
+        };
+
+        axios
+            .post(API_URL + 'login', payload)
+            .then(function (response) {
+                console.log(response);
+                if (response.status === 0) {
+                    console.log(`--SUBMITTING--
+                        Email: ${this.state.email}
+                        Password: ${this.state.password}`);
+                } else if (response.code === 204) {
+                    console.log('Username password do not match');
+                    alert('username password do not match');
+                } else {
+                    if (response.status === 200) {
+                        console.log(response.data);
+                        alert('you are logged in');
+                    } else {
+                        console.log('Username does not exists');
+                        alert('Username does not exist');
+                    }
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     };
 
     handleChange = (e) => {
@@ -166,7 +84,7 @@ class Login extends Component {
                 break;
             case 'password':
                 formErrors.password =
-                    value.length < 8 ? 'minimum 8 characters required' : '';
+                    value.length < 2 ? 'minimum 5 characters required' : '';
                 break;
             default:
                 break;
@@ -184,50 +102,48 @@ class Login extends Component {
             <div className="wrapper">
                 <div className="form-wrapper">
                     <h1>Login</h1>
-                    <form onSubmit={this.handleSubmit} noValidate>
-                        <div className="email">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                className={
-                                    formErrors.email.length > 0 ? 'error' : null
-                                }
-                                placeholder="Email"
-                                type="email"
-                                name="email"
-                                noValidate
-                                onChange={this.handleChange}
-                            />
-                            {formErrors.email.length > 0 && (
-                                <span className="errorMessage">
-                                    {formErrors.email}
-                                </span>
-                            )}
-                        </div>
-                        <div className="password">
-                            <label htmlFor="password">Password</label>
-                            <input
-                                className={
-                                    formErrors.password.length > 0
-                                        ? 'error'
-                                        : null
-                                }
-                                placeholder="Password"
-                                type="password"
-                                name="password"
-                                noValidate
-                                onChange={this.handleChange}
-                            />
-                            {formErrors.password.length > 0 && (
-                                <span className="errorMessage">
-                                    {formErrors.password}
-                                </span>
-                            )}
-                        </div>
-                        <div className="createAccount">
-                            <button type="submit">Create Account</button>
-                            <small>No Account yet?</small>
-                        </div>
-                    </form>
+                    <div className="email">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            className={
+                                formErrors.email.length > 0 ? 'error' : null
+                            }
+                            placeholder="Email"
+                            type="email"
+                            name="email"
+                            noValidate
+                            onChange={this.handleChange}
+                        />
+                        {formErrors.email.length > 0 && (
+                            <span className="errorMessage">
+                                {formErrors.email}
+                            </span>
+                        )}
+                    </div>
+                    <div className="password">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            className={
+                                formErrors.password.length > 0 ? 'error' : null
+                            }
+                            placeholder="Password"
+                            type="password"
+                            name="password"
+                            noValidate
+                            onChange={this.handleChange}
+                        />
+                        {formErrors.password.length > 0 && (
+                            <span className="errorMessage">
+                                {formErrors.password}
+                            </span>
+                        )}
+                    </div>
+                    <div className="createAccount">
+                        <button onClick={this.handleSubmit}>
+                            Create Account
+                        </button>
+                        <small>No Account yet?</small>
+                    </div>
                 </div>
             </div>
         );
@@ -235,4 +151,3 @@ class Login extends Component {
 }
 
 export default Login;
- */
