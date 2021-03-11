@@ -7,19 +7,17 @@ import { getUserProfile } from './userAction';
 
 import { fetchNewAccessJWT } from '_api/userApi';
 import Dashboard from './Dashboard';
+import Admin from "layouts/Admin"
 
-const PrivateRoute = ({ children, ...rest }) => {
+const PrivateRoute = ({ component: children, Component, ...rest }) => {
     const dispatch = useDispatch();
     const { isAuth } = useSelector((state) => state.login);
-    const { user } = useSelector((state) => state.user);
 
     useEffect(() => {
         const updateAccessJWT = async () => {
             const result = await fetchNewAccessJWT();
             result && dispatch(loginSuccess());
         };
-
-        !user._id && dispatch(getUserProfile());
 
         !sessionStorage.getItem('accessJWT') &&
             localStorage.getItem('kitaCateringSite') &&
@@ -28,13 +26,13 @@ const PrivateRoute = ({ children, ...rest }) => {
         !isAuth &&
             sessionStorage.getItem('accessJWT') &&
             dispatch(loginSuccess());
-    }, [dispatch, isAuth, user._id]);
+    }, [dispatch, isAuth]);
 
     return (
         <Route
             {...rest}
             render={() =>
-                isAuth ? <Dashboard>{children}</Dashboard> : <Redirect to="/" />
+                isAuth ? <Admin>{children}</Admin> : <Redirect to="/auth/login" />
             }
         />
     );
