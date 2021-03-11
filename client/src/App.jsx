@@ -28,14 +28,13 @@ function App() {
                     <Route path="/about" exact component={About} />
                     <Route path="/contact" exact component={Contact} />
                     <Route path="/auth" component={Auth} />
-                    <Route path="/admin" component={Admin} />
                     <Route
                         path="/verification/:_id/:email"
                         exact
                         component={UserVerification}
                     />
                     <PrivateRoute
-                        path="/admin/Dashboard"
+                        path="/admin/dashboard"
                         exact
                         component={Dashboard}
                     />

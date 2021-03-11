@@ -6,7 +6,7 @@ const loginUrl = rootUrl + "/login";
 /* const userProfileUrl = rootUrl + "/"; */
 // test if works 
 const userProfileUrl = rootUrl;
-const logoutUrl = rootUrl + "user/logout";
+const logoutUrl = rootUrl + "/logout";
 const newAccessJWT = rootUrl + "tokens";
 const userVerificationUrl = userProfileUrl + "/verify";
 
