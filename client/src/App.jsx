@@ -1,71 +1,46 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
     BrowserRouter as Router,
-    Switch,
     Route,
+    Switch,
     Redirect,
 } from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { history } from './_helpers/history';
-import { alertActions } from './_actions/alert.actions';
+// layouts
+import Admin from 'layouts/Admin';
+import Auth from 'layouts/Auth';
 
-import Login from './components/Auth/Login';
-import Signup from './components/Auth/Signup';
-import RegisterFacility from './components/Auth/RegisterFacility';
-import RegisterParents from './components/Auth/RegisterParents';
-import { PrivateRoute } from './components/PrivateRoute';
-import Dashboard from './components/Dashboard/Dashboard';
-
-import Navbar from './components/Header/Navbar';
-import Footer from './components/Footer/Footer';
-import About from './components/Main/About';
-import Home from './components/Home/Home';
-
-import './App.css';
+// views without layouts
+import Home from 'views/Home';
+import About from 'views/About';
+import Contact from 'views/Contact';
+import Dashboard from 'views/admin/Dashboard';
+import PrivateRoute from 'views/admin/PrivateRoute';
+import UserVerification from 'views/admin/UserVerification';
 
 function App() {
-    const alert = useSelector((state) => state.alert);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        history.listen((location, action) => {
-            // clear alert on location change
-            dispatch(alertActions.clear());
-        });
-    });
-
     return (
         <>
-            {' '}
-            {alert.message && (
-                <div className={`alert ${alert.type}`}>{alert.message}</div>
-            )}
             <Router>
-                <Navbar />
                 <Switch>
-                    <Route exact path={['/', '/home']} component={Home} />
-                    <Route exact path="/about" component={About} />
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/signup" component={Signup} />
+                    {/* add routes without layouts */}
+                    <Route path={['/', '/home']} exact component={Home} />
+                    <Route path="/about" exact component={About} />
+                    <Route path="/contact" exact component={Contact} />
+                    <Route path="/auth" component={Auth} />
+                    <Route path="/admin" component={Admin} />
                     <Route
+                        path="/verification/:_id/:email"
                         exact
-                        path="/register/facility"
-                        component={RegisterFacility}
-                    />
-                    <Route
-                        exact
-                        path="/register/user"
-                        component={RegisterParents}
+                        component={UserVerification}
                     />
                     <PrivateRoute
+                        path="/admin/Dashboard"
                         exact
-                        path="/dashboard"
                         component={Dashboard}
                     />
                     <Redirect from="*" to="/" />
                 </Switch>
-                <Footer />
             </Router>
         </>
     );
