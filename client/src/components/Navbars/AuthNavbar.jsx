@@ -3,7 +3,7 @@ import React from 'react';
 import { useHistory, NavLink, Link } from 'react-router-dom';
 
 import { userLogout } from '_api/userApi';
-import Logo from '../../assets/img/logo.png';
+import Logo from '../../assets/img/logo-catering-fix.svg';
 
 export default function Navbar() {
     const [navbarOpen, setNavbarOpen] = React.useState(false);

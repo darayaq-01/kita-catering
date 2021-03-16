@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import NotificationDropdown from 'components/Dropdowns/NotificationDropdown';
 import UserDropdown from 'components/Dropdowns/UserDropdown';
 
-import Logo from '../../assets/img/logo.png';
+import Logo from '../../../assets/img/logo-catering-fix.svg';
 
 export default function Sidebar() {
     const [collapseShow, setCollapseShow] = React.useState('hidden');

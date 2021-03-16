@@ -6,7 +6,7 @@ import { loginSuccess } from 'views/auth/Login/loginSlice';
 import { getUserProfile } from './userAction';
 
 import { fetchNewAccessJWT } from '_api/userApi';
-import Dashboard from './Dashboard';
+import AdminDashboard from './adminDashboard/AdminDashboard';
 import Admin from "layouts/Admin"
 
 const PrivateRoute = ({ component: children, Component, ...rest }) => {

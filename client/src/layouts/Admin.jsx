@@ -4,13 +4,13 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // components
 
 import AdminNavbar from 'components/Navbars/AdminNavbar';
-import Sidebar from 'components/Sidebar/Sidebar';
+import Sidebar from 'views/admin/Sidebar/Sidebar';
 import FooterAdmin from 'components/Footers/FooterAdmin';
 
 // views
 
-import Dashboard from 'views/admin/Dashboard';
-import Settings from 'views/admin/Settings';
+import AdminDashboard from 'views/admin/adminDashboard/AdminDashboard';
+import Settings from 'views/admin/settings/Settings';
 import Tables from 'views/admin/Tables';
 
 export default function Admin() {
@@ -24,7 +24,7 @@ export default function Admin() {
                         <Route
                             path="/admin/dashboard"
                             exact
-                            component={Dashboard}
+                            component={AdminDashboard}
                         />
                         <Route
                             path="/admin/settings"
