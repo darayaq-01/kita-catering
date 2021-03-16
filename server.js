@@ -23,6 +23,11 @@ const app = express();
 
 app.use(cors())
 
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"))
+}
+
 // LOGGING THE REQUEST METHOD AND ROUTE TO CONSOLE
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
