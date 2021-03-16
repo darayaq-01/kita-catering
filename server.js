@@ -24,9 +24,12 @@ const app = express();
 app.use(cors())
 
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"))
-}
+// ... other imports 
+/* const path = require("path") */
+
+// ... other app.use middleware 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
 
 // LOGGING THE REQUEST METHOD AND ROUTE TO CONSOLE
 if (process.env.NODE_ENV === "development") {
@@ -67,6 +70,11 @@ app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
+
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(
   PORT,

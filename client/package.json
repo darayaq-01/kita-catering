@@ -1,5 +1,5 @@
 {
-  "name": "client-v1",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -62,8 +62,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000",
-  "devDependencies": {
-    "@tailwindcss/custom-forms": "^0.2.1"
-  }
+  "proxy": "http://localhost:5000"
 }
