@@ -3,7 +3,7 @@ import React from 'react';
 import { useHistory, NavLink, Link } from 'react-router-dom';
 
 import { userLogout } from '_api/userApi';
-import Logo from '../../assets/img/logo.png';
+import Logo from '../../assets/img/logo-catering-fix.svg';
 
 export default function Navbar() {
     const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -64,12 +64,12 @@ export default function Navbar() {
                                 >
                                     Contact
                                 </Link>
-                                <Link
-                                    to="/admin/dashboard"
+                                {/* <Link
+                                    to="/user/dashboard"
                                     className="px-2 py-1 text-base font-medium text-gray-700 transition-colors duration-200 transform rounded 2xl:text-gray-900 hover:bg-gray-900 hover:text-gray-100 md:mx-2;"
                                 >
-                                    testing/dashboard
-                                </Link>
+                                    client dashboard{' '}
+                                </Link> */}
                             </li>
                             <ul className="flex flex-row items-center mt-5">
                                 {/*  // should be register or none (when user is already login) */}

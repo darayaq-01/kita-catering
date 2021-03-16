@@ -2,8 +2,8 @@ import React from 'react';
 
 // components
 
-import CardSettings from 'components/Cards/CardSettings';
-import CardProfile from 'components/Cards/CardProfile';
+import CardSettings from './CardSettings';
+import CardProfile from './CardProfile';
 
 export default function Settings() {
     return (

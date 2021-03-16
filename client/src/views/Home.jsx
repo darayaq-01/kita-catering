@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import Footer from 'components/Footers/Footer';
-import About from 'components/Home/About';
+import AboutComp from 'components/Home/AboutComp';
 import Testimonials from 'components/Home/Testimonials';
 
 import HeroImg from '../assets/img/hero.jpg';
@@ -38,7 +38,10 @@ const Home = () => {
                     <div className="items-left flex flex-col flex-wrap">
                         {/* buttons */}
                         <div className="w-full lg:w-4/12 px-4 lg:order-3">
-                            <Link to="#/" className="py-6 px-3 mt-32 sm:mt-0">
+                            <Link
+                                to="/auth/register"
+                                className="py-6 px-3 mt-32 sm:mt-0"
+                            >
                                 <button
                                     className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-2xl px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                                     type="button"
@@ -49,7 +52,10 @@ const Home = () => {
                         </div>
 
                         <div className="w-full lg:w-4/12 px-4 lg:order-3">
-                            <Link to="#/" className="py-6 px-3 mt-32 sm:mt-0">
+                            <Link
+                                to="/auth/login"
+                                className="py-6 px-3 mt-32 sm:mt-0"
+                            >
                                 <button
                                     className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-2xl px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                                     type="button"
@@ -86,15 +92,15 @@ const Home = () => {
             <main>
                 {/* content */}
                 <section className="pt-20 pb-30">
-                    <div className="container mx-auto px-4">
-                        <About />
-                    </div>
+                    {/* <div className="container mx-auto px-4"> */}
+                    <AboutComp />
+                    {/*  </div> */}
                 </section>
 
                 <section className="pt-20 pb-30">
-                    <div className="container mx-auto px-4">
-                        <Testimonials />
-                    </div>
+                    {/*  <div className="container mx-auto px-4"> */}
+                    <Testimonials />
+                    {/*  </div> */}
                 </section>
             </main>
 

@@ -21,8 +21,8 @@ router.route("/login").post(authUser);
 // first the protect middleware comes into play and then the getUserProfile - protect always runs first
 router
   .route("/profile")
-  .get(protect, getUserProfile)
-  .put(protect, updateUserProfile);
+  .get(protect, admin, getUserProfile)
+  .put(protect, admin, updateUserProfile);
 
 router
   .route("/:id")

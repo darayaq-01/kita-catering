@@ -11,7 +11,7 @@ const About = () => {
                         KIDS!
                     </span>
                 </h2>
-                <p className="mt-4 text-gray-600 dark:text-gray-400">
+                <p className="mt-4 px-10 text-gray-600 dark:text-gray-400">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Quidem modi reprehenderit vitae exercitationem aliquid
                     dolores ullam temporibus enim expedita aperiam mollitia iure
@@ -21,14 +21,14 @@ const About = () => {
 
                 <button className="mt-8">
                     <Link
-                        to="/#"
+                        to="/about#"
                         className="px-5 py-2 font-semibold text-gray-100 transition-colors duration-200 transform bg-indigo-600 rounded hover:bg-indigo-800"
                     >
                         About us
                     </Link>
                 </button>
             </div>
-            <div className="flex flex-wrap mt-12 justify-center">
+            <div className="lg:flex flex-wrap mt-12 justify-center">
                 <div className="w-full lg:w-3/12 px-4 text-center">
                     <div className="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
                         <i className="fas fa-medal text-xl"></i>

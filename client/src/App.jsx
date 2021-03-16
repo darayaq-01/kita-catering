@@ -14,9 +14,15 @@ import Auth from 'layouts/Auth';
 import Home from 'views/Home';
 import About from 'views/About';
 import Contact from 'views/Contact';
-import Dashboard from 'views/admin/Dashboard';
+import AdminDashboard from 'views/admin/adminDashboard/AdminDashboard';
 import PrivateRoute from 'views/admin/PrivateRoute';
 import UserVerification from 'views/admin/UserVerification';
+
+import Settings from 'views/admin/settings/Settings';
+import Tables from 'views/admin/Tables';
+
+import ListUsers from 'features/listUsers/ListUsers';
+import UserDashboard from 'views/user/userDashboard/UserDashboard';
 
 function App() {
     return (
@@ -36,8 +42,28 @@ function App() {
                     <PrivateRoute
                         path="/admin/dashboard"
                         exact
-                        component={Dashboard}
+                        component={AdminDashboard}
                     />
+                    <PrivateRoute
+                        path="/admin/tables"
+                        exact
+                        component={Tables}
+                    />
+                    <PrivateRoute
+                        path="/admin/settings"
+                        exact
+                        component={Settings}
+                    />
+                    <PrivateRoute
+                        path="/admin/lists"
+                        exact
+                        component={ListUsers}
+                    />
+                    <PrivateRoute
+                        path="/user/dashboard"
+                        exact
+                        component={UserDashboard}
+                    />{' '}
                     <Redirect from="*" to="/" />
                 </Switch>
             </Router>

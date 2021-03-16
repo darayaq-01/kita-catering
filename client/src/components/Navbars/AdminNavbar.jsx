@@ -2,7 +2,7 @@
 import React from 'react';
 import { useHistory, NavLink, Link } from 'react-router-dom';
 
-import Logo from '../../assets/img/logo.png';
+import Logo from '../../assets/img/logo-catering-fix.svg';
 import UserDropdown from 'components/Dropdowns/UserDropdown';
 
 const Navbar = () => {
