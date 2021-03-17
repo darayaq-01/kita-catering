@@ -1,4 +1,4 @@
-import path from "path";
+import path from "path"
 import colors from "colors";
 import express from "express";
 import dotenv from "dotenv";
@@ -28,7 +28,6 @@ app.use(cors())
 /* const path = require("path") */
 
 // ... other app.use middleware 
-app.use(express.static(path.join(__dirname, "client", "build")))
 
 
 // LOGGING THE REQUEST METHOD AND ROUTE TO CONSOLE
@@ -64,6 +63,7 @@ app.use("/api/upload", uploadRoutes);
 // app.use("/uploads", express.static(path.join(folder, "/uploads")));
 const __dirname = path.resolve();
 // make the folder static, as an uploads folder // __dirname is not available in ES6, but in common js - so it gets mimiced above
+app.use(express.static(path.join(__dirname, "client", "build")))
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use(notFound);
@@ -72,6 +72,7 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 
 // Right before your app.listen(), add this:
+//__dirname = dirname(fileURLToPath(import.meta.url));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
