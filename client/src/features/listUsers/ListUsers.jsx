@@ -12,7 +12,7 @@ export default function ListUsers({ color }) {
     const [data, setData] = useState([]);
     const [q, setQ] = useState('');
     useEffect(() => {
-        fetch('http://localhost:5000/api/users', {
+        fetch('/api/users', {
             method: 'get',
             headers: {
                 authorization: `Bearer ${sessionStorage.getItem('accessJWT')}`,

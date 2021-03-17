@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // routes
-const rootUrl = "http://localhost:5000/api/users"
+const rootUrl = "/api/users"
 const loginUrl = rootUrl + "/login";
 /* const userProfileUrl = rootUrl + "/"; */
 // test if works 
