@@ -47,9 +47,9 @@ app.use(express.json());
 //   next();
 // });
 
-app.get("/", (req, res) => {
+/* app.get("/", (req, res) => {
   res.send("API is running");
-});
+}); */
 
 // MAIN ROUTES PATHS
 app.use("/api/products", productRoutes);
