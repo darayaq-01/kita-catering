@@ -1,4 +1,4 @@
-import path from "path"
+import path from "path";
 import colors from "colors";
 import express from "express";
 import dotenv from "dotenv";
@@ -10,7 +10,7 @@ import connectDB from "./config/db.js";
 // ROUTES - MAIN PATHS
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
-// import orderRoutes from "./routes/orderRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
 import cors from "cors";
@@ -21,14 +21,12 @@ connectDB();
 
 const app = express();
 
-app.use(cors())
+app.use(cors());
 
-
-// ... other imports 
+// ... other imports
 /* const path = require("path") */
 
-// ... other app.use middleware 
-
+// ... other app.use middleware
 
 // LOGGING THE REQUEST METHOD AND ROUTE TO CONSOLE
 if (process.env.NODE_ENV === "development") {
@@ -54,7 +52,7 @@ app.use(express.json());
 // MAIN ROUTES PATHS
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
-// app.use("/api/orders", orderRoutes);
+app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoutes);
 
 // IMAGE UPLOAD ROUTE
@@ -63,7 +61,7 @@ app.use("/api/upload", uploadRoutes);
 // app.use("/uploads", express.static(path.join(folder, "/uploads")));
 const __dirname = path.resolve();
 // make the folder static, as an uploads folder // __dirname is not available in ES6, but in common js - so it gets mimiced above
-app.use(express.static(path.join(__dirname, "client", "build")))
+app.use(express.static(path.join(__dirname, "client", "build")));
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use(notFound);

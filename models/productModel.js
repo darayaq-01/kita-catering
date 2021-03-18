@@ -58,6 +58,7 @@ const productSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    availableAt: [{ type: Date }],
   },
   {
     timestamps: true,

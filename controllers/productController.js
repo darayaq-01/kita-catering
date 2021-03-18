@@ -60,6 +60,7 @@ const createProduct = asyncHandler(async (req, res) => {
     isVegan,
     isVegetarian,
     isGlutenFree,
+    availableAt,
   } = req.body;
 
   const productExists = await Product.findOne({ name: name });
@@ -80,6 +81,7 @@ const createProduct = asyncHandler(async (req, res) => {
     isVegan,
     isVegetarian,
     isGlutenFree,
+    availableAt,
   });
   const createdProduct = await product.save();
   res.status(201).json(createdProduct);
@@ -100,6 +102,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     isVegan,
     isVegetarian,
     isGlutenFree,
+    availableAt,
   } = req.body;
 
   const product = await Product.findById(req.params.id);
@@ -114,6 +117,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.isVegan = isVegan;
     product.isVegetarian = isVegetarian;
     product.isGlutenFree = isGlutenFree;
+    product.availableAt = availableAt;
 
     const updatedProduct = await product.save();
     res.status(201).json(updatedProduct);
