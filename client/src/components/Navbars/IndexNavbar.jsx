@@ -64,39 +64,56 @@ export default function Navbar() {
                                 >
                                     Contact
                                 </Link>
-                                {/* <Link
+                                <Link
                                     to="/user/dashboard"
                                     className="px-2 py-1 text-base font-medium text-gray-700 transition-colors duration-200 transform rounded 2xl:text-gray-900 hover:bg-gray-900 hover:text-gray-100 md:mx-2;"
                                 >
+                                    user dashboard{' '}
+                                </Link>
+                                <Link
+                                    to="/client/dashboard"
+                                    className="px-2 py-1 text-base font-medium text-gray-700 transition-colors duration-200 transform rounded 2xl:text-gray-900 hover:bg-gray-900 hover:text-gray-100 md:mx-2;"
+                                >
                                     client dashboard{' '}
-                                </Link> */}
+                                </Link>
+                                <Link
+                                    to="/admin/dashboard"
+                                    className="px-2 py-1 text-base font-medium text-gray-700 transition-colors duration-200 transform rounded 2xl:text-gray-900 hover:bg-gray-900 hover:text-gray-100 md:mx-2;"
+                                >
+                                    admin dashboard{' '}
+                                </Link>
                             </li>
                             <ul className="flex flex-row items-center mt-5">
                                 {/*  // should be register or none (when user is already login) */}
-                                <Link
-                                    to="/auth/register"
-                                    className="bg-blue-500 text-white active:bg-blue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                                    type="button"
-                                >
-                                    Register
-                                </Link>
+                                {!sessionStorage.getItem('accessJWT') ? (
+                                    <Link
+                                        to="/auth/register"
+                                        className="bg-blue-500 text-white active:bg-blue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                                        type="button"
+                                    >
+                                        Register
+                                    </Link>
+                                ) : null}
 
                                 {/* // should be login or logout if user is already
                             signin */}
-                                <Link
-                                    to="/auth/login"
-                                    className="bg-blue-500 text-white active:bg-blue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                                    type="button"
-                                >
-                                    LogIn
-                                </Link>
-                                <Link
-                                    onClick={logMeOut}
-                                    className="bg-blue-500 text-white active:bg-blue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                                    type="button"
-                                >
-                                    Logout
-                                </Link>
+                                {!sessionStorage.getItem('accessJWT') ? (
+                                    <Link
+                                        to="/auth/login"
+                                        className="bg-blue-500 text-white active:bg-blue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                                        type="button"
+                                    >
+                                        LogIn
+                                    </Link>
+                                ) : (
+                                    <Link
+                                        onClick={logMeOut}
+                                        className="bg-blue-500 text-white active:bg-blue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                                        type="button"
+                                    >
+                                        Logout
+                                    </Link>
+                                )}
                             </ul>
                         </ul>
                     </div>

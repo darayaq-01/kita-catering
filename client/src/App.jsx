@@ -14,15 +14,15 @@ import Auth from 'layouts/Auth';
 import Home from 'views/Home';
 import About from 'views/About';
 import Contact from 'views/Contact';
-import AdminDashboard from 'views/admin/adminDashboard/AdminDashboard';
 import PrivateRoute from 'views/admin/PrivateRoute';
 import UserVerification from 'views/admin/UserVerification';
-
+import Tables from 'views/admin/adminDashboard/Tables';
 import Settings from 'views/admin/settings/Settings';
-import Tables from 'views/admin/Tables';
-
-import ListUsers from 'features/listUsers/ListUsers';
+import AdminDashboard from 'views/admin/adminDashboard/AdminDashboard';
+import ClientDashboard from 'views/admin/adminClient/ClientDashboard';
 import UserDashboard from 'views/user/userDashboard/UserDashboard';
+import CalendarForm from 'features/calendar/featAdmin/CalendarForm';
+import ListUsers from 'features/listUsers/ListUsers';
 
 function App() {
     return (
@@ -40,11 +40,6 @@ function App() {
                         component={UserVerification}
                     />
                     <PrivateRoute
-                        path="/admin/dashboard"
-                        exact
-                        component={AdminDashboard}
-                    />
-                    <PrivateRoute
                         path="/admin/tables"
                         exact
                         component={Tables}
@@ -58,6 +53,21 @@ function App() {
                         path="/admin/lists"
                         exact
                         component={ListUsers}
+                    />
+                    <PrivateRoute
+                        path="/admin/add-option"
+                        exact
+                        component={CalendarForm}
+                    />
+                    <PrivateRoute
+                        path="/admin/dashboard"
+                        exact
+                        component={AdminDashboard}
+                    />
+                    <PrivateRoute
+                        path="/client/dashboard"
+                        exact
+                        component={ClientDashboard}
                     />
                     <PrivateRoute
                         path="/user/dashboard"

@@ -1,19 +1,13 @@
 
-import { getUserPending, getUserSuccess, getUserFail } from "./userSlice";
+import { getUserSuccess, getUserFail } from "./userSlice";
 import { fetchUser } from "../../_api/userApi";
+
 
 export const getUserProfile = () => async (dispatch) => {
     try {
-        dispatch(getUserPending());
-
-        const result = await fetchUser();
-        console.log("const result:", result)
-
-        if (result.user && result.user._id)
-            return dispatch(getUserSuccess(result.user));
-
-        dispatch(getUserFail("User is not found"));
-    } catch (error) {
-        dispatch(getUserFail(error));
+        await fetchUser().then((response) => dispatch(getUserSuccess(response.data)))
+    } catch (err) {
+        return console.log(err.message)
     }
+
 };

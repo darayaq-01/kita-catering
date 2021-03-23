@@ -10,13 +10,14 @@ const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        getUserPending: (state) => {
+        getUserPending: (state, action) => {
             state.isLoading = true;
         },
         getUserSuccess: (state, { payload }) => {
-            state.isLoading = false;
             state.user = payload;
+            state.isLoading = false;
             state.error = "";
+            /*  state.push({ firstName, isLoading: false, error: "" }) */
         },
         getUserFail: (state, { payload }) => {
             state.isLoading = false;
@@ -26,7 +27,6 @@ const userSlice = createSlice({
 });
 
 export const {
-    getUserPending,
     getUserSuccess,
     getUserFail,
 } = userSlice.actions;

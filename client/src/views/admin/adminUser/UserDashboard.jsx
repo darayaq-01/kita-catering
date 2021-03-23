@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import AdminCalendar from 'features/calendar/featAdmin/AdminCalendar';
 import CardCalendar from 'features/calendar/featClient/CardCalendar';
 import CardSideCal from 'components/Cards/CardSideCal';
 
 import BackgroundImg from '../../../assets/img/hero.jpg';
 
-export default function AdminDashboard() {
-    const [firstName] = useState(localStorage.firstName);
-
+export default function UserDashboard() {
     return (
         <>
             <div
@@ -23,10 +20,10 @@ export default function AdminDashboard() {
                     backgroundColor: 'black',
                 }}
             >
-                <div className="rounded-t bg-white mx-6 mb-0 px-6 py-6">
+                <div className="rounded-t bg-white mb-0 px-6 py-6">
                     <div className="text-center flex justify-between">
                         <h6 className="text-gray-800 text-xl font-bold">
-                            Welcome, {firstName}
+                            USER!
                         </h6>
                     </div>
                 </div>
@@ -46,10 +43,6 @@ export default function AdminDashboard() {
                             <br />
 
                             <CardCalendar day={4} />
-                        </div>{' '}
-                        */}
-                        <div className="w-full mb-12 px-4">
-                            {/*  <AdminCalendar /> */}
                         </div>
                     </div>
                     <div className="w-full lg:w-4/12 px-4">

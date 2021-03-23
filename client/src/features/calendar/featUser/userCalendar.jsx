@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import format from 'date-fns/format';
 
+// new -testings
+
 import addBusinessDays from 'date-fns/addBusinessDays';
 
 // option card
@@ -11,8 +13,7 @@ export function CardCalendarInner() {
                 className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md"
                 style={{
                     backgroundImage:
-                        'url("https://images.unsplash.com/photo-1521903062400-b80f2cb8cb9d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80")',
-                    height: '100px',
+                        'url(https://images.unsplash.com/photo-1521903062400-b80f2cb8cb9d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80)',
                 }}
             ></div>
 
@@ -63,7 +64,7 @@ const CardCalendar = (props) => {
                 </div>
 
                 <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
-                    <h1 className="text-lg font-bold text-white">save/edit</h1>
+                    <h1 className="text-lg font-bold text-white">edit</h1>
                     <button className="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-200 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
                         Cancel the food
                     </button>

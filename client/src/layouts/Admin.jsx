@@ -11,7 +11,8 @@ import FooterAdmin from 'components/Footers/FooterAdmin';
 
 import AdminDashboard from 'views/admin/adminDashboard/AdminDashboard';
 import Settings from 'views/admin/settings/Settings';
-import Tables from 'views/admin/Tables';
+import Tables from 'views/admin/adminDashboard/Tables';
+import CalendarForm from 'features/calendar/featAdmin/CalendarForm';
 
 export default function Admin() {
     return (
@@ -32,6 +33,11 @@ export default function Admin() {
                             component={Settings}
                         />
                         <Route path="/admin/tables" exact component={Tables} />
+                        <Route
+                            path="/admin/add-option"
+                            exact
+                            component={CalendarForm}
+                        />
                         <Redirect from="/admin" to="/admin/dashboard" />
                     </Switch>
                     <FooterAdmin />

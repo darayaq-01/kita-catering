@@ -47,6 +47,8 @@ export const userLogin = (frmData) => {
             const res = await axios.post(loginUrl, frmData);
 
             resolve(res.data);
+            localStorage.setItem('admin', res.data.isAdmin)
+            console.log("is login admin?", res.data.isAdmin)
 
 
             if (res.data.token) {
@@ -71,11 +73,16 @@ export const fetchUser = () => {
                 reject("Token not found!");
             }
 
-            const res = await axios.get(userProfileUrl, {
+            const res = await axios.get(userProfileUrl + "/profile", {
                 headers: {
                     Authorization: `Bearer ${accessJWT}`,
                 },
             });
+            if (res.data) {
+                console.log('isAdmin', res.data.isAdmin);
+            } else {
+                console.log('res.data does not exist')
+            }
 
             resolve(res.data);
         } catch (error) {
@@ -126,3 +133,7 @@ export const userLogout = async () => {
         console.log(error);
     }
 };
+
+
+
+

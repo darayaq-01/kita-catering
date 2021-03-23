@@ -2,9 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import NotificationDropdown from 'components/Dropdowns/NotificationDropdown';
 import UserDropdown from 'components/Dropdowns/UserDropdown';
-
 import Logo from '../../../assets/img/logo-catering-fix.svg';
 
 export default function Sidebar() {
@@ -29,9 +27,6 @@ export default function Sidebar() {
                     </Link>
                     {/* User */}
                     <ul className="md:hidden items-center flex flex-wrap list-none">
-                        <li className="inline-block relative">
-                            <NotificationDropdown />
-                        </li>
                         <li className="inline-block relative">
                             <UserDropdown />
                         </li>
@@ -83,7 +78,7 @@ export default function Sidebar() {
                         <hr className="my-4 md:min-w-full" />
                         {/* Heading */}
                         <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                            Admin Layout Pages
+                            Admin Dashboard
                         </h6>
                         {/* Navigation */}
 
@@ -166,6 +161,32 @@ export default function Sidebar() {
                                 </Link>
                             </li>
                         </ul>
+
+                        <button className="items-center">
+                            <Link
+                                className={
+                                    'text-xs uppercase bg-transparent hover:bg-red-600 text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded block ' +
+                                    (window.location.href.indexOf(
+                                        '/admin/settings'
+                                    ) !== -1
+                                        ? 'text-blue-500 hover:text-blue-600'
+                                        : 'text-gray-800 hover:text-gray-600')
+                                }
+                                to="/admin/add-option"
+                            >
+                                <i
+                                    className={
+                                        'fas fa-plus mr-2 text-sm ' +
+                                        (window.location.href.indexOf(
+                                            '/admin/settings'
+                                        ) !== -1
+                                            ? 'opacity-75'
+                                            : 'text-gray-400')
+                                    }
+                                ></i>{' '}
+                                Add-Menu
+                            </Link>
+                        </button>
 
                         {/* Divider */}
                         <hr className="my-4 md:min-w-full" />

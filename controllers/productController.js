@@ -81,7 +81,7 @@ const createProduct = asyncHandler(async (req, res) => {
     isVegan,
     isVegetarian,
     isGlutenFree,
-    availableAt,
+    availableAt: availableAt[0],
   });
   const createdProduct = await product.save();
   res.status(201).json(createdProduct);
