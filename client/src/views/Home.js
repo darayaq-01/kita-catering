@@ -15,7 +15,6 @@ export default function Index() {
             <IndexNavbar fixed />
             {/* is need to fix the navbar and change the behavior when is scroll down */}
             {/* <Navbar transparent /> */}
-
             <main>
                 {/* hero section */}
                 <section>
@@ -31,6 +30,7 @@ export default function Index() {
                                 className="w-full h-full absolute opacity-75 bg-black"
                             ></span>
                         </div>
+
                         <div className="container relative mx-auto">
                             <div className="items-center flex flex-wrap">
                                 <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
@@ -61,9 +61,10 @@ export default function Index() {
                                 </div>
                             </div>
                         </div>
+
                         <div
                             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
-                            style={{ transform: 'translateZ(0)' }}
+                            style={{ transform: 'translateZ(9)' }}
                         >
                             <svg
                                 className="absolute bottom-0 overflow-hidden"
@@ -113,7 +114,7 @@ export default function Index() {
                                     Cooking for{' '}
                                     <span className="text-red-500">KIDS!</span>
                                 </h2>
-                                <p className="text-lg leading-relaxed m-4 text-gray-600">
+                                <p className="text-lg leading-relaxed m-4 text-gray-900">
                                     Lorem, ipsum dolor sit amet consectetur
                                     adipisicing elit. Quidem modi reprehenderit
                                     vitae exercitationem aliquid dolores ullam
@@ -122,13 +123,11 @@ export default function Index() {
                                     consequuntur saepe accusantium consequatur.
                                 </p>
                                 <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
-                                    <a
-                                        href="/#"
-                                        target="_blank"
+                                    <Link to="/about"
                                         className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blue-500 active:bg-blue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                                     >
                                         More about us
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -139,16 +138,14 @@ export default function Index() {
                     <div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
                         <div className="flex flex-wrap mt-12 justify-center">
                             <div className="w-full lg:w-3/12 px-4 text-center">
-                                <div className="text-gray-600 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
+                                <div className="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
                                     <i className="fas fa-medal text-xl"></i>
                                 </div>
                                 <h6 className="text-xl mt-5 font-semibold">
                                     Excelent Services
                                 </h6>
                                 <p className="mt-2 m-4 text-lg leading-relaxedtext-gray-600">
-                                    Some quick example text to build on the card
-                                    title and make up the bulk of the card's
-                                    content.
+                                    Best services for all the hungry people who need our services*
                                 </p>
                             </div>
                             <div className="w-full lg:w-3/12 px-4 text-center">
@@ -156,12 +153,10 @@ export default function Index() {
                                     <i className="fas fa-poll text-xl"></i>
                                 </div>
                                 <h5 className="text-xl mt-5 font-semibold">
-                                    Grow your market
+                                    Healthy first
                                 </h5>
                                 <p className="mt-2 m-4 text-lg leading-relaxedtext-gray-600">
-                                    Some quick example text to build on the card
-                                    title and make up the bulk of the card's
-                                    content.
+                                    Our french potatos are cooking with bio-potatos and bio-oil
                                 </p>
                             </div>
                             <div className="w-full lg:w-3/12 px-4 text-center">
@@ -172,9 +167,7 @@ export default function Index() {
                                     Launch time
                                 </h5>
                                 <p className="mt-2 m-4 text-lg leading-relaxedtext-gray-600">
-                                    Some quick example text to build on the card
-                                    title and make up the bulk of the card's
-                                    content.
+                                    Best food with the best quality
                                 </p>
                             </div>
                         </div>
@@ -184,14 +177,14 @@ export default function Index() {
                 <section>
                     <div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
                         <div className="flex flex-wrap mt-12 justify-center">
-                            {/*  <div className="container mx-auto px-4"> */}
+
                             <Testimonials />
-                            {/*  </div> */}
+
                         </div>
                     </div>
                 </section>
 
-                {/*    <section className="pb-20 relative block bg-white">
+                <section className="pb-20 relative block bg-white">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
                         style={{ transform: 'translateZ(0)' }}
@@ -211,8 +204,9 @@ export default function Index() {
                             ></polygon>
                         </svg>
                     </div>
-                </section> */}
+                </section>
             </main>
+            <Testimonials />
             <Footer />
         </>
     );
