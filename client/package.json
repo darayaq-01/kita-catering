@@ -1,8 +1,8 @@
 {
-  "name": "notus-react",
+  "name": "client",
   "version": "1.0.0",
-  "description": "Notus React - A free Tailwind CSS and React UI Kit and Admin by Creative Tim.",
-  "repository": "https://github.com/creativetimofficial/notus-react",
+  "description": "kita catering project",
+  "repository": "",
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.14.0",
