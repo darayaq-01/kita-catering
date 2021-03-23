@@ -84,17 +84,15 @@ export default function AddProduct() {
                         name="IsGlutenFree"
                         ref={register}
                     />{' '}
-                    <label>attach image</label>
+                    <label>
+                        <input
+                            type="text"
+                            name="Image"
+                            ref={register}
+                        />
+                    </label>
                     <p>nothing yet</p>
                     <label>Choose date</label>
-                    {/* <Controller
-                    as={DayPicker}
-                    control={control}
-                    valueName="select"
-                    name="DatePicker"
-                    className="DatePicker"
-                    onChange={<Multiselect />}
-                /> */}
                     <label>choose a date</label>
                     <div>
                         <MultiSelect setDates={setDates} dates={Dates} />

@@ -12,7 +12,7 @@ const Testimonials = () => {
     return (
         <article className="flex flex-col justify-between px-6 py-2 bg-transparent">
             <h2 className="text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">
-                Our Clients
+                What our clients said about us
             </h2>
             {/* className here is for the display */}
             <Glide

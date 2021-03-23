@@ -65,6 +65,41 @@ export default function Navbar(props) {
                                     Home
                                 </Link>
                             </li>
+
+                            {localStorage.getItem('isAdmin') ? (
+                                <li className="flex items-center">
+                                    <Link
+                                        to="/admin/dashboard"
+                                        className={
+                                            'px-2 py-1 text-base font-medium text-gray-700 transition-colors duration-200 transform rounded 2xl:text-gray-900 hover:bg-gray-900 hover:text-gray-100 md:mx-2;' +
+                                            (window.location.href.indexOf(
+                                                '/admin/dashboard'
+                                            ) !== -1
+                                                ? 'text-blue-500 hover:text-blue-600'
+                                                : 'text-gray-300 hover:text-gray-300')
+                                        }
+                                    >
+                                        Dashboard
+                                </Link>
+                                </li>
+                            ) : null}
+                            {localStorage.getItem('isAdmin: false') ? (
+                                <li className="flex items-center">
+                                    <Link
+                                        to="/user/dashboard"
+                                        className={
+                                            'px-2 py-1 text-base font-medium text-gray-700 transition-colors duration-200 transform rounded 2xl:text-gray-900 hover:bg-gray-900 hover:text-gray-100 md:mx-2;' +
+                                            (window.location.href.indexOf(
+                                                '/admin/dashboard'
+                                            ) !== -1
+                                                ? 'text-blue-500 hover:text-blue-600'
+                                                : 'text-gray-300 hover:text-gray-300')
+                                        }
+                                    >
+                                        Dashboard
+                                </Link>
+                                </li>
+                            ) : null}
                             <li className="flex flex-col md:flex-row items-center">
                                 <Link
                                     to="/about"
@@ -153,16 +188,16 @@ export default function Navbar(props) {
                                     </Link>
                                 </li>
                             ) : (
-                                <li className="flex items-center">
-                                    <button
-                                        className="bg-blue-500 text-white active:bg-blue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                                        type="button"
-                                        onClick={onLogOut}
-                                    >
-                                        Logout
+                                    <li className="flex items-center">
+                                        <button
+                                            className="bg-blue-500 text-white active:bg-blue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                                            type="button"
+                                            onClick={onLogOut}
+                                        >
+                                            Logout
                                     </button>
-                                </li>
-                            )}
+                                    </li>
+                                )}
                         </ul>
                     </div>
                 </div>

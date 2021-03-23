@@ -37,10 +37,12 @@ export default function Login() {
         if (isSuccess) {
             dispatch(clearState());
             // condition to go to admin or user dashboard ....how????
-            if (localStorage.getItem('isAdmin')) {
+            if (localStorage.getItem('isAdmin: true')) {
                 history.push('/admin/dashboard');
-            } else {
+            } else if (!localStorage.getItem('isAdmin: false')) {
                 history.push('/user/dashboard');
+            } else {
+                history.push('/');
             }
         }
     }, [isError, isSuccess]);
