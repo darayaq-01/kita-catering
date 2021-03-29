@@ -1,8 +1,12 @@
-# kita-catering (find a name)
+# KITA catering project
 
-resume - what app do
+<pre>Note. This project is still under development. Was prepared as a final project for a one-year Web Development Course at DCI.</pre>
 
--   live demo -
+Kita, catering proyect, as build with the purpose to connect users of a caternig with the company who serves the food. The original idea was to be useful in the Kindergardens. With this tool the users, ie. parents, will be able not only to see what is the kid are eating in their Kindergardens but also to choose between the options given by teh Catering Company.Also is possible to cancel the food when the final user will not be there.
+
+For the Catering company is usefull this tool to automatize the process and also is usefull to get some statistics of their clients, as favourite foods.
+
+- live demo: https://kita-catering.herokuapp.com/
 
 ## technologies used
 
@@ -13,27 +17,8 @@ resume - what app do
 -   Axios
 -   Tailwindcss
 
--   what contains, techs
-    Proyect from
-
 ## Implementation
 
--   more details about what we did, what we use, basic functions...
-
-## Future implementation
-
--   ideas to improve the app
-
-## Example UI
-
--   pictures or gif to example
-
-.env inside the main folder and add proxy to the frontends package.json ("proxy": "http://127.0.0.1:5000",)
-
-NODE_ENV = development
-
-PORT = 5000
-
-MONGO_URI = mongodb+srv://kita1234:food4All@kita.fnmgc.mongodb.net/kitacatering?retryWrites=true&w=majority
-
-JWT_SECRET = superssavesupersecretuwillneverknowatleasttillyoufindoutthissecretwhoopwhoop
+[x] In a very first phase our app will be operative in their main function. But, as this project emerge as a excercice in our course, we will explore different approaches to make it functional. 
+[ ] In our version 1.0 we expect our app will adopt they final confiration and will be full operative.
+[ ] In our version 2.0 we will include some improvements like the access to the statistics and optimization related to mobile display and accesibility.
