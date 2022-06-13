@@ -1,3 +1,5 @@
+<pre>The project is broken and need to be re-build.</pre>
+
 # KITA catering project
 
 <pre>Note. This project is still under development. Was prepared as a final project for a one-year Web Development Course at DCI.</pre>
